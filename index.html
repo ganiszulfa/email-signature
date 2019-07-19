@@ -1,4 +1,95 @@
-<form onsubmit="event.preventDefault(); generateSignature();">
+<html>
+  <head>
+    <style>
+      * {
+  font-family:Verdana;
+}
+form {
+  min-width:400px;
+  margin:20px;
+  position:absolute;
+  right:0;
+  z-index: 10;
+  padding:20px 20px 20px 20px;
+  font-family:Arial;
+  -webkit-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+-moz-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+}
+label {
+  display:block;
+  text-transform:uppercase;
+  font-size:12px;
+}
+input {
+  font-size:15px;
+  padding:5px;
+  width:100%;
+  max-width: -webkit-fill-available;
+}
+.half-input {
+  display:table;
+  width:100%;
+}
+.half-input input {
+  display:table-cell;
+  width:47.5%;
+  box-shadow: inset 0 0 1px #000;
+  border:0px;
+}
+.half-input input.last {
+  margin-left:0px;
+}
+.form-group {
+  margin-bottom:10px;
+}
+form button {
+  width:100%;
+  border-radius:0px;
+  padding: 15px;
+  font-size:16px;
+  background-color:purple;
+  color:#fff;
+  cursor:pointer;
+  text-transform:uppercase;
+}
+textarea {
+  margin:30px 10px;
+  padding:20px;
+  border: none;
+  background-color:white;
+  width:50%;
+  height:200px;
+  -webkit-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+-moz-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+}
+#signatureHtml {
+  position:relative;
+}
+.btn-clipboard {
+  margin-top:40px;
+  border-radius:0px;
+  padding: 10px 20px;
+  text-transform:uppercase;
+  border:0px;
+  font-size:13px;
+  background-color:purple;
+  color:#fff;
+  cursor:pointer;
+  -webkit-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+-moz-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+}
+.use-chrome-warning {
+  display:inline;
+}
+    </style>
+    </head>
+  
+  <body>
+  
+  <form onsubmit="event.preventDefault(); generateSignature();">
   <h3><i class="far fa-address-card"></i> My Info.</h3>
   <div class="form-group">
     <label>Name</label>
@@ -65,3 +156,56 @@
   </em>"</p>
 <h3><i class="fab fa-apple"></i> Apple Mail</h3>
 <p><strong>IMPORTANT</strong>: Be sure to UNCHECK <em>"Always match my default message font."</em> before pasting the signature<br/><a href="https://support.apple.com/guide/mail/change-signatures-preferences-cpmlprefsig/mac" target="_blank">Instructions for Adding to Apple Mail</a></p>
+  </body>
+  <script>
+    function doSnackBar(){
+  Snackbar.show({
+    text: 'Copied!',
+    pos: 'top-center'
+  });
+}
+function getSignatureHtml(name, title, mainPhone, directPhone, mobilePhone){
+  if(mobilePhone != ''){
+    var mobileText = (mobilePhone != '') ? 'Mobile <a style="color:#696969; text-decoration:none;" target="_blank" href="tel:'+mobilePhone+'">'+mobilePhone+'</a>' : '';
+    var mobileMeHtml = '<tr><td style="color:#696969; padding-bottom:15px; font-size:13px;">'+mobileText+'</td></tr>';
+  }
+  else {
+    var mobileMeHtml = '<tr style="display:none;"><td></td></tr>';
+  }
+  
+  var sigHtml = '<table style="font-family:Arial;"> <tr> <th rowspan="8" style="vertical-align:top; padding-right: 35px;"><img src="https://mt.pennebaker.com/clients/pennebaker/web/email/P-Logo-Signature.gif" alt="pb-logo" border="0" /></th> <th align="left" style="text-align:left; font-weight:normal; letter-spacing:6px; padding-bottom:14px; font-size:16px;">PENNEBAKER</th> </tr> <tr> <td style="color:#000000; font-size:13px;">'+name+'</td> </tr> <tr> <td style="color:#696969; padding-bottom:15px; font-size:13px;">'+title+'</td> </tr> <tr> <td style="color:#696969; font-size:13px;">Main <a style="color:#696969; text-decoration:none;" href="tel:'+mainPhone+'" target="_blank">'+mainPhone+'</a> / Direct <a style="color:#696969; text-decoration:none;" href="tel:'+directPhone+'" target="_blank">'+directPhone+'</td> </tr> '+mobileMeHtml+' <tr> <td style="color:#696969; font-size:13px;">1100 W. 23rd Street, Suite 200, Houston, TX 77008</td> </tr> <tr> <td style="color:#696969; padding-bottom:14px; font-size:13px;"><a target="_blank" href="https://pennebaker.com" style="color:#696969; text-decoration:none;">www.pennebaker.com</a></td> </tr> <tr> <td><a target="_blank" href="https://www.facebook.com/pennebakerbrand" style="margin-right:8px;"><img height="18" style="max-height: 18px; margin-left:0px" src="https://mt.pennebaker.com/clients/pennebaker/web/email/icon-f.png" /></a>&nbsp;&nbsp;<a target="_blank" href="https://www.linkedin.com/company/pennebaker"><img height="18" style="max-height: 18px;" src="https://mt.pennebaker.com/clients/pennebaker/web/email/icon-in.png" /></a></td> </tr></table>';
+  return sigHtml;
+}
+function generateSignature(){
+  var name = document.querySelector('#inputName').value;
+  var title = document.querySelector('#inputTitle').value;
+  var mainPhone = '713.963.8607';
+  var directPhone = document.querySelector('#inputPhoneDirect').value;
+  var mobilePhone = document.querySelector('#inputPhoneMobile').value;
+  
+  var sigHtml = getSignatureHtml(name, title, mainPhone, directPhone, mobilePhone);
+  
+  var sigHolder = document.querySelector('.sig-holder');
+  var sigHtmlHolder = document.querySelector('#signatureHtml textarea');
+  sigHolder.innerHTML = sigHtml;
+  sigHtmlHolder.innerHTML = sigHtml;
+  
+  Snackbar.show({
+    text: 'Signature Generated!',
+    pos: 'top-center'
+  });
+  
+}
+var phoneMaskDirect = new IMask(
+  document.getElementById('inputPhoneDirect'), {
+    mask: '000.000.0000'
+});
+var phoneMaskMobile = new IMask(
+  document.getElementById('inputPhoneMobile'), {
+    mask: '000.000.0000'
+});
+
+new ClipboardJS('.btn-clipboard');
+ 
+  </script>
+</html>
