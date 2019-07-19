@@ -1,214 +1,194 @@
 <html>
-  <head>
-    <style>
-      * {
-  font-family:Verdana;
-}
-form {
-  min-width:400px;
-  margin:20px;
-  position:absolute;
-  right:0;
-  z-index: 10;
-  padding:20px 20px 20px 20px;
-  font-family:Arial;
-  -webkit-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
--moz-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
-}
-label {
-  display:block;
-  text-transform:uppercase;
-  font-size:12px;
-}
-input {
-  font-size:15px;
-  padding:5px;
-  width:100%;
-  max-width: -webkit-fill-available;
-}
-.half-input {
-  display:table;
-  width:100%;
-}
-.half-input input {
-  display:table-cell;
-  width:47.5%;
-  box-shadow: inset 0 0 1px #000;
-  border:0px;
-}
-.half-input input.last {
-  margin-left:0px;
-}
-.form-group {
-  margin-bottom:10px;
-}
-form button {
-  width:100%;
-  border-radius:0px;
-  padding: 15px;
-  font-size:16px;
-  background-color:purple;
-  color:#fff;
-  cursor:pointer;
-  text-transform:uppercase;
-}
-textarea {
-  margin:30px 10px;
-  padding:20px;
-  border: none;
-  background-color:white;
-  width:50%;
-  height:200px;
-  -webkit-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
--moz-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
-}
-#signatureHtml {
-  position:relative;
-}
-.btn-clipboard {
-  margin-top:40px;
-  border-radius:0px;
-  padding: 10px 20px;
-  text-transform:uppercase;
-  border:0px;
-  font-size:13px;
-  background-color:purple;
-  color:#fff;
-  cursor:pointer;
-  -webkit-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
--moz-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
-}
-.use-chrome-warning {
-  display:inline;
-}
-    </style>
+    <head>
+        <style>
+            * {
+                font-family:Verdana;
+            }
+            form {
+                min-width:400px;
+                margin:20px;
+                position:absolute;
+                right:0;
+                z-index: 10;
+                padding:20px 20px 20px 20px;
+                font-family:Arial;
+                -webkit-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+                -moz-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+                box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+            }
+            label {
+                display:block;
+                text-transform:uppercase;
+                font-size:12px;
+            }
+            input {
+                font-size:15px;
+                padding:5px;
+                width:100%;
+                max-width: -webkit-fill-available;
+            }
+            .half-input {
+                display:table;
+                width:100%;
+            }
+            .half-input input {
+                display:table-cell;
+                width:47.5%;
+                box-shadow: inset 0 0 1px #000;
+                border:0px;
+            }
+            .half-input input.last {
+                margin-left:0px;
+            }
+            .form-group {
+                margin-bottom:10px;
+            }
+            form button {
+                width:100%;
+                border-radius:0px;
+                padding: 15px;
+                font-size:16px;
+                background-color:blue;
+                color:#fff;
+                cursor:pointer;
+                text-transform:uppercase;
+            }
+            textarea {
+                margin:30px 10px;
+                padding:20px;
+                border: none;
+                background-color:white;
+                width:50%;
+                height:200px;
+                -webkit-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+                -moz-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+                box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+            }
+            #signatureHtml {
+                position:relative;
+                padding-top:20px;
+            }
+            .btn-clipboard {
+                margin-top:40px;
+                border-radius:0px;
+                padding: 10px 20px;
+                text-transform:uppercase;
+                border:0px;
+                font-size:13px;
+                background-color:blue;
+                color:#fff;
+                cursor:pointer;
+                -webkit-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+                -moz-box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+                box-shadow: -1px 0px 22px 6px rgba(0,0,0,0.22);
+            }
+            .use-chrome-warning {
+                display:inline;
+            }
+        </style>
     </head>
-  
-  <body>
-  
-  <form onsubmit="event.preventDefault(); generateSignature();">
-  <h3><i class="far fa-address-card"></i> My Info.</h3>
-  <div class="form-group">
-    <label>Name</label>
-    <input required id="inputName" />
-  </div>
-  <div class="form-group">
-    <label>Title</label>
-    <input required id="inputTitle" />
-  </div>
-  <div class="form-group">
-    <label>Direct Phone #</label>
-    <input required id="inputPhoneDirect" />
-  </div>
-  <div class="form-group">
-    <label>Mobile Phone # (optional)</label>
-    <input id="inputPhoneMobile" />
-  </div>
-  <button type="Submit"><i class="fas fa-marker"></i> Generate Signature</button>
-</form>
-<div id="rawSigHolder" class="sig-holder">
-<table style="font-family:Arial;">
-  <tr>
-    <th rowspan="8" style="vertical-align:top; padding-right: 35px;"><img src="https://mt.pennebaker.com/clients/pennebaker/web/email/P-Logo-Signature.gif" alt="pb-logo" border="0" /></th>
-    <th align="left" style="text-align:left; font-weight:normal; letter-spacing:6px; padding-bottom:14px;  font-size:16px;">PENNEBAKER</th>
-  </tr>
-  <tr>
-    <td style="color:#000000; font-size:13px;">John McClane</td>
-  </tr>
-  <tr>
-    <td style="color:#696969; padding-bottom:15px; font-size:13px;">Detective Lt.</td>
-  </tr>
-  <tr>
-    <td style="color:#696969; font-size:13px;">Main <a style="color:#696969; text-decoration:none;" href="tel:713.963.8607" target="_blank">713.963.8607</a> / Direct <a style="color:#696969; text-decoration:none;" href="tel:713.555.1234" target="_blank">713.555.1234</td>
-  </tr>
-  <tr>
-    <td style="color:#696969; padding-bottom:15px; font-size:13px;">Mobile <a style="color:#696969; text-decoration:none;" href="tel:713.555.1234" target="_blank">713.555.1234</a></td>
-  </tr>
-  <tr>
-    <td style="color:#696969; font-size:13px;">1100 W. 23rd Street, Suite 200, Houston, TX 77008</td>
-  </tr>
-  <tr>
-    <td style="color:#696969; padding-bottom:14px; font-size:13px;"><a target="_blank" href="https://pennebaker.com" style="color:#696969; text-decoration:none;">www.pennebaker.com</a></td>
-  </tr>
-  <tr>
-    <td><a target="_blank" href="https://www.facebook.com/pennebakerbrand" style="margin-right:8px;"><img height="18" style="margin-left:0px" src="https://mt.pennebaker.com/clients/pennebaker/web/email/icon-f.png" /></a>&nbsp;&nbsp;<a target="_blank" href="https://www.linkedin.com/company/pennebaker"><img height="18" src="https://mt.pennebaker.com/clients/pennebaker/web/email/icon-in.png" /></a></td>
-  </tr>
-</table>
-</div>
-<div id="signatureHtml">
-  <textarea style="display:none;" id="signatureHtmlArea" readonly></textarea>
-  <button onClick="doSnackBar()" class="btn-clipboard raw" data-clipboard-target="#rawSigHolder">
-    <i class="fas fa-copy"></i> Click to Copy Signature to Clipboard
-  </button>
-  <div class="use-chrome-warning"><i class="fas fa-arrow-left"></i> Please Use Chrome For This Copy Feature</div>
-  <button style="display:none;" onClick="doSnackBar()" class="btn-clipboard" data-clipboard-target="#signatureHtmlArea">
-    Copy HTML to clipboard
-  </button>
-</div>
-<h1>Instructions</h1>
-<h3><i class="fas fa-envelope"></i> Outlook</h3>
-<p><a href="https://support.htmlsig.com/hc/en-us/articles/210157508-How-do-I-add-an-email-signature-in-Outlook-2016-for-Mac-" target="_blank">Instructions for Adding to Outlook</a></p>
-<h3><i class="fab fa-google"></i> Gmail</h3>
-<p><a href="https://support.google.com/mail/answer/8395?co=GENIE.Platform%3DDesktop&hl=en" target="_blank">Instructions for Adding to Gmail</a><br>--- Note: Don't forget to CHECK the box that says <em>"Insert this signature before quoted text in replies and remove the "--" line that precedes it.
-  </em>"</p>
-<h3><i class="fab fa-apple"></i> Apple Mail</h3>
-<p><strong>IMPORTANT</strong>: Be sure to UNCHECK <em>"Always match my default message font."</em> before pasting the signature<br/><a href="https://support.apple.com/guide/mail/change-signatures-preferences-cpmlprefsig/mac" target="_blank">Instructions for Adding to Apple Mail</a></p>
-  </body>
-   <script src="https://unpkg.com/imask"></script> 
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script> 
-   <script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.15/dist/snackbar.js"></script> 
-  <script>
-    function doSnackBar(){
-  Snackbar.show({
-    text: 'Copied!',
-    pos: 'top-center'
-  });
+
+    <body>
+
+        <form onsubmit="event.preventDefault(); generateSignature();">
+            <h3><i class="far fa-address-card"></i> My Info.</h3>
+            <div class="form-group">
+                <label>Name</label>
+                <input required id="inputName" />
+            </div>
+            <div class="form-group">
+                <label>Title</label>
+                <input required id="inputTitle" />
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input required id="inputEmail" />
+            </div>
+            <button type="Submit"><i class="fas fa-marker"></i> Generate Signature</button>
+        </form>
+        <div id="rawSigHolder" class="sig-holder">
+            <table style="font-family:Arial;">
+                <tr>
+                    <th rowspan="8" style="border-right-color: #888888; border-right-width: 3px; border-right-style: solid; vertical-align:top; padding-left: 10px; padding-top:10px; padding-right: 10;"><img height="88" width="88" src="https://s3-ap-southeast-1.amazonaws.com/evosesports.com/images/logo_for_email_signature.png" alt="evos-logo" border="0" /></th>
+                </tr>
+                <tr>
+                    <td style="padding-left: 10px; color:#333333; font-size:15px;">Name Here</td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 10px; color:#111111; padding-bottom:15px; font-size:14px; font-weight:bold;">Position Here | EVOS Holdings</td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 10px; color:#666666; font-size:13px;">b: <span style="color:#45ADDF">EVOS ESPORTS</span></td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 10px; color:#666666; font-size:13px;">e: <span style="color:#45ADDF">email@address</span></td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 10px; color:#666666; font-size:13px;">a: <span style="color:#111111">Tong Fong Building</span></td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 10px; color:#111111; font-size:13px;">&nbsp;&nbsp;&nbsp;&nbsp;290 River Valley Road</td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 10px; color:#111111; font-size:13px;">&nbsp;&nbsp;&nbsp;&nbsp;Singapore 238331</td>
+                </tr>
+            </table>
+        </div>
+        <div id="signatureHtml">
+            <textarea style="display:none;" id="signatureHtmlArea" readonly></textarea>
+            <button onClick="doSnackBar()" class="btn-clipboard raw" data-clipboard-target="#rawSigHolder">
+                <i class="fas fa-copy"></i> Click to Copy Signature to Clipboard
+            </button>
+            <div class="use-chrome-warning"><i class="fas fa-arrow-left"></i> Please Use Chrome For This Copy Feature</div>
+            <button style="display:none;" onClick="doSnackBar()" class="btn-clipboard" data-clipboard-target="#signatureHtmlArea">
+                Copy HTML to clipboard
+            </button>
+        </div>
+        <h1>Instructions</h1>
+        <h3><i class="fas fa-envelope"></i> Outlook</h3>
+        <p><a href="https://support.htmlsig.com/hc/en-us/articles/210157508-How-do-I-add-an-email-signature-in-Outlook-2016-for-Mac-" target="_blank">Instructions for Adding to Outlook</a></p>
+        <h3><i class="fab fa-google"></i> Gmail</h3>
+        <p><a href="https://support.google.com/mail/answer/8395?co=GENIE.Platform%3DDesktop&hl=en" target="_blank">Instructions for Adding to Gmail</a><br>--- Note: Don't forget to CHECK the box that says <em>"Insert this signature before quoted text in replies and remove the "--" line that precedes it.
+        </em>"</p>
+        <h3><i class="fab fa-apple"></i> Apple Mail</h3>
+        <p><strong>IMPORTANT</strong>: Be sure to UNCHECK <em>"Always match my default message font."</em> before pasting the signature<br/><a href="https://support.apple.com/guide/mail/change-signatures-preferences-cpmlprefsig/mac" target="_blank">Instructions for Adding to Apple Mail</a></p>
+    </body>
+    <script src="https://unpkg.com/imask"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.15/dist/snackbar.js"></script> 
+    <script>
+        function doSnackBar(){
+            Snackbar.show({
+                text: 'Copied!',
+                pos: 'top-center'
+            });
+        }
+function getSignatureHtml(name, title, email){
+    var sigHtml = '<table style="font-family:Arial;"> <tr> <th rowspan="8" style="border-right-color: #888888; border-right-width: 3px; border-right-style: solid; vertical-align:top; padding-left: 10px; padding-top:10px; padding-right: 10;"><img height="88" width="88" src="https://s3-ap-southeast-1.amazonaws.com/evosesports.com/images/logo_for_email_signature.png" alt="evos-logo" border="0" /></th> </tr> <tr> <td style="padding-left: 10px; color:#333333; font-size:15px;">'+name+'</td> </tr> <tr> <td style="padding-left: 10px; color:#111111; padding-bottom:15px; font-size:14px; font-weight:bold;">'+title+' | EVOS Holdings</td> </tr> <tr> <td style="padding-left: 10px; color:#666666; font-size:13px;">b: <span style="color:#45ADDF">EVOS ESPORTS</span></td> </tr> <tr> <td style="padding-left: 10px; color:#666666; font-size:13px;">e: <span style="color:#45ADDF">'+email+'</span></td> </tr> <tr> <td style="padding-left: 10px; color:#666666; font-size:13px;">a: <span style="color:#111111">Tong Fong Building</span></td> </tr> <tr> <td style="padding-left: 10px; color:#111111; font-size:13px;">&nbsp;&nbsp;&nbsp;&nbsp;290 River Valley Road</td> </tr> <tr> <td style="padding-left: 10px; color:#111111; font-size:13px;">&nbsp;&nbsp;&nbsp;&nbsp;Singapore 238331</td> </tr> </table>';
+    return sigHtml;
 }
-function getSignatureHtml(name, title, mainPhone, directPhone, mobilePhone){
-  if(mobilePhone != ''){
-    var mobileText = (mobilePhone != '') ? 'Mobile <a style="color:#696969; text-decoration:none;" target="_blank" href="tel:'+mobilePhone+'">'+mobilePhone+'</a>' : '';
-    var mobileMeHtml = '<tr><td style="color:#696969; padding-bottom:15px; font-size:13px;">'+mobileText+'</td></tr>';
-  }
-  else {
-    var mobileMeHtml = '<tr style="display:none;"><td></td></tr>';
-  }
-  
-  var sigHtml = '<table style="font-family:Arial;"> <tr> <th rowspan="8" style="vertical-align:top; padding-right: 35px;"><img src="https://mt.pennebaker.com/clients/pennebaker/web/email/P-Logo-Signature.gif" alt="pb-logo" border="0" /></th> <th align="left" style="text-align:left; font-weight:normal; letter-spacing:6px; padding-bottom:14px; font-size:16px;">PENNEBAKER</th> </tr> <tr> <td style="color:#000000; font-size:13px;">'+name+'</td> </tr> <tr> <td style="color:#696969; padding-bottom:15px; font-size:13px;">'+title+'</td> </tr> <tr> <td style="color:#696969; font-size:13px;">Main <a style="color:#696969; text-decoration:none;" href="tel:'+mainPhone+'" target="_blank">'+mainPhone+'</a> / Direct <a style="color:#696969; text-decoration:none;" href="tel:'+directPhone+'" target="_blank">'+directPhone+'</td> </tr> '+mobileMeHtml+' <tr> <td style="color:#696969; font-size:13px;">1100 W. 23rd Street, Suite 200, Houston, TX 77008</td> </tr> <tr> <td style="color:#696969; padding-bottom:14px; font-size:13px;"><a target="_blank" href="https://pennebaker.com" style="color:#696969; text-decoration:none;">www.pennebaker.com</a></td> </tr> <tr> <td><a target="_blank" href="https://www.facebook.com/pennebakerbrand" style="margin-right:8px;"><img height="18" style="max-height: 18px; margin-left:0px" src="https://mt.pennebaker.com/clients/pennebaker/web/email/icon-f.png" /></a>&nbsp;&nbsp;<a target="_blank" href="https://www.linkedin.com/company/pennebaker"><img height="18" style="max-height: 18px;" src="https://mt.pennebaker.com/clients/pennebaker/web/email/icon-in.png" /></a></td> </tr></table>';
-  return sigHtml;
-}
+
 function generateSignature(){
-  var name = document.querySelector('#inputName').value;
-  var title = document.querySelector('#inputTitle').value;
-  var mainPhone = '713.963.8607';
-  var directPhone = document.querySelector('#inputPhoneDirect').value;
-  var mobilePhone = document.querySelector('#inputPhoneMobile').value;
-  
-  var sigHtml = getSignatureHtml(name, title, mainPhone, directPhone, mobilePhone);
-  
-  var sigHolder = document.querySelector('.sig-holder');
-  var sigHtmlHolder = document.querySelector('#signatureHtml textarea');
-  sigHolder.innerHTML = sigHtml;
-  sigHtmlHolder.innerHTML = sigHtml;
-  
-  Snackbar.show({
-    text: 'Signature Generated!',
-    pos: 'top-center'
-  });
-  
+    var name = document.querySelector('#inputName').value;
+    var title = document.querySelector('#inputTitle').value;
+    var email = document.querySelector('#inputEmail').value;
+
+    var sigHtml = getSignatureHtml(name, title, email);
+
+    var sigHolder = document.querySelector('.sig-holder');
+    var sigHtmlHolder = document.querySelector('#signatureHtml textarea');
+
+    sigHolder.innerHTML = sigHtml;
+    sigHtmlHolder.innerHTML = sigHtml;
+
+    Snackbar.show({
+        text: 'Signature Generated!',
+        pos: 'top-center'
+    });
+
 }
-var phoneMaskDirect = new IMask(
-  document.getElementById('inputPhoneDirect'), {
-    mask: '000.000.0000'
-});
-var phoneMaskMobile = new IMask(
-  document.getElementById('inputPhoneMobile'), {
-    mask: '000.000.0000'
-});
 
 new ClipboardJS('.btn-clipboard');
- 
-  </script>
+
+    </script>
 </html>
