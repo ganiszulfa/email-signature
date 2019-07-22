@@ -88,66 +88,105 @@
         </style>
     </head>
 
-    <body>
+    <body style="max-width:550px;">
 
-        <form onsubmit="event.preventDefault(); generateSignature();">
+        <form style="z-index:100;" onsubmit="event.preventDefault(); generateSignature();">
             <h3><i class="far fa-address-card"></i> My Info.</h3>
             <div class="form-group">
                 <label>Name</label>
                 <input required id="inputName" />
             </div>
             <div class="form-group">
-                <label>Title</label>
+                <label>Position</label>
                 <input required id="inputTitle" />
-            </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input required id="inputEmail" />
             </div>
             <div class="form-group">
                 <label>Company</label>
                 <input required id="inputCompany" value="EVOS Holdings"/>
             </div>
             <div class="form-group">
+                <label>Email</label>
+                <input required id="inputEmail" />
+            </div>
+            <div class="form-group">
                 <label>Phone Number (optional)</label>
                 <input id="inputPhoneNumber" />
+            </div>
+            <div class="form-group">
+                <label>Address Line 1</label>
+                <input required id="inputAddr1" value="Tong Fong Building"/>
+            </div>
+            <div class="form-group">
+                <label>Address Line 2</label>
+                <input required id="inputAddr2" value="290 River Valley Road Singapore"/>
             </div>
             <div class="form-group">
                 <label>Linkedin URL (optional)</label>
                 <input id="inputLI" />
             </div>
+            <hr/>
+            <div class="form-group">
+                <label>Logo (URL)</label>
+                <input required id="inputLogo" value="https://s3-ap-southeast-1.amazonaws.com/evosesports.com/images/logo_for_email_signature.png"/>
+            </div>
+            <div class="form-group">
+                <label>Logo Height (pixel)</label>
+                <input required id="inputLogoH" value="100"/>
+            </div>
+            <div class="form-group">
+                <label>Logo Width (pixel)</label>
+                <input required id="inputLogoW" value="100"/>
+            </div>
+            <div class="form-group">
+                <label>Link Color (hexadecimal value)</label>
+                <input required id="inputColor" value="#04a6ed"/>
+            </div>
             <button type="Submit"><i class="fas fa-marker"></i> Generate Signature</button>
         </form>
         <div id="rawSigHolder" class="sig-holder">
-            <table style="font-family:Arial;">
-                <tr>
-                    <th rowspan="9" style="border-right-color: #888888; border-right-width: 3px; border-right-style: solid; vertical-align:top; padding-left: 10px; padding-top:10px; padding-right: 10;"><img height="88" width="88" src="https://s3-ap-southeast-1.amazonaws.com/evosesports.com/images/logo_for_email_signature.png" alt="evos-logo" border="0" /></th>
-                </tr>
-                <tr>
-                    <td style="padding-left: 10px; color:#333333; font-size:15px;">Name Here</td>
-                </tr>
-                <tr>
-                    <td style="padding-left: 10px; color:#111111; padding-bottom:15px; font-size:14px; font-weight:bold;">Position Here | EVOS Holdings</td>
-                </tr>
-                <tr>
-                    <td style="padding-left: 10px; color:#666666; font-size:13px;">e: <a href="mailto:email@evos.sg" style="text-decoration:none;color:#45ADDF">email@evos.sg</a></td>
-                </tr>
-                <tr>
-                    <td style="padding-left: 10px; color:#666666; font-size:13px;">p: <a href="#" style="text-decoration:none;color:#45ADDF">+123 456 789</a></td>
-                </tr>
-                <tr>
-                    <td style="padding-left: 10px; color:#666666; font-size:13px;">a: <span style="color:#111111">Tong Fong Building</span></td>
-                </tr>
-                <tr>
-                    <td style="padding-left: 10px; color:#111111; font-size:13px;">&nbsp;&nbsp;&nbsp;&nbsp;290 River Valley Road</td>
-                </tr>
-                <tr>
-                    <td style="padding-left: 10px; color:#111111; font-size:13px;">&nbsp;&nbsp;&nbsp;&nbsp;Singapore 238331</td>
-                </tr>
-                <tr>
-                    <td style="padding-left: 10px; color:#666666; font-size:13px;">li: <a href="https://www.linkedin.com/in/ganiszulfa/" style="text-decoration:none;color:#45ADDF">linkedin.com/in/ganiszulfa</a></td>
-                </tr>
+
+
+<table style="background:none;border-width:0px;border:0px;margin:0;margin-top:50px;padding:0" cellspacing="0" cellpadding="0" border="0">
+   <tbody>
+      <tr>
+         <td style="padding-top:10;padding-bottom:0;padding-left:0;padding-right:7px;border-top:0;border-bottom:0;border-left:0;border-right:solid 3px #7a7a7a" valign="top"><img id="m_-6502759557817129844m_-3880331651255804399preview-image-url" src="https://s3-ap-southeast-1.amazonaws.com/evosesports.com/images/logo_for_email_signature.png" class="CToWUd" width="100" height="100"></td>
+         <td style="padding-top:0;padding-bottom:0;padding-left:12px;padding-right:0">
+            <table style="background:none;border-width:0px;border:0px;margin:0;padding:0" cellspacing="0" cellpadding="0" border="0">
+               <tbody>
+                  <tr>
+                     <td colspan="2" style="padding-bottom:5px;color:#7a7a7a;font-size:14px;font-family:Arial,Helvetica,sans-serif">Name Here</td>
+                  </tr>
+                  <tr>
+                     <td colspan="2" style="color:#333333;font-size:12px;font-family:Arial,Helvetica,sans-serif"><strong>Position Here | Company Here </strong></td>
+                  </tr>
+                  <tr>
+                     <td style="vertical-align:bottom;width:20px;color:#7a7a7a;font-size:12px;font-family:Arial,Helvetica,sans-serif" width="20" valign="bottom">e:</td>
+                     <td style="vertical-align:bottom;color:#333333;font-size:12px;font-family:Arial,Helvetica,sans-serif" valign="bottom"><a href="mailto:email@address.sg" style="color:#04a6ed;text-decoration:none;font-weight:normal;font-size:12px" target="_blank">email@address.sg</a></td>
+                  </tr>
+                  <tr>
+                     <td style="vertical-align:bottom;width:20px;color:#7a7a7a;font-size:12px;font-family:Arial,Helvetica,sans-serif" width="20" valign="bottom">p:</td>
+                     <td style="vertical-align:bottom;color:#333333;font-size:12px;font-family:Arial,Helvetica,sans-serif" valign="bottom">012-345-678</td>
+                  </tr>
+                  <tr>
+                     <td style="vertical-align:bottom;width:20px;color:#7a7a7a;font-size:12px;font-family:Arial,Helvetica,sans-serif" width="20" valign="bottom">a:</td>
+                     <td style="vertical-align:bottom;color:#333333;font-size:12px;font-family:Arial,Helvetica,sans-serif" valign="bottom">Address Line 1 Here</td>
+                  </tr>
+                  <tr>
+                     <td style="vertical-align:bottom;width:20px;color:#7a7a7a;font-size:12px;font-family:Arial,Helvetica,sans-serif" width="20" valign="bottom">&nbsp;</td>
+                     <td style="vertical-align:bottom;color:#333333;font-size:12px;font-family:Arial,Helvetica,sans-serif" valign="bottom">Address Line 2 Here</td>
+                  </tr>
+                  <tr>
+                     <td style="vertical-align:bottom;width:20px;color:#7a7a7a;font-size:12px;font-family:Arial,Helvetica,sans-serif" width="20" valign="bottom">l:</td>
+                     <td style="vertical-align:bottom;color:#333333;font-size:12px;font-family:Arial,Helvetica,sans-serif" valign="bottom"><a href="http://google.com/" style="color:#04a6ed;text-decoration:none;font-weight:normal;font-size:12px" target="_blank">linkedin.com/myprofile</a></td>
+                  </tr>
+               </tbody>
             </table>
+         </td>
+      </tr>
+   </tbody>
+</table>
+
+
         </div>
         <div id="signatureHtml">
             <textarea style="display:none;" id="signatureHtmlArea" readonly></textarea>
@@ -178,20 +217,20 @@
                 pos: 'top-center'
             });
         }
-function getSignatureHtml(name, title, email, li, phone, company){
+function getSignatureHtml(name, title, email, li, phone, company, color, logo, logoH, logoW, addr1, addr2){
     var liHtml = '';
     if (li.length != 0) {
         var liURL = "https://"+li;
         if (li.toLowerCase().startsWith("http")) {
             liURL = li;
         }
-        liHtml = '<tr> <td style="padding-left: 10px; color:#666666; font-size:13px;">li: <a href="'+liURL+'" style="text-decoration:none;color:#45ADDF">'+li+'</a></td> </tr>';
+        liHtml = '<tr> <td style="vertical-align:bottom;width:20px;color:#7a7a7a;font-size:12px;font-family:Arial,Helvetica,sans-serif" width="20" valign="bottom">l:</td> <td style="vertical-align:bottom;color:#333333;font-size:12px;font-family:Arial,Helvetica,sans-serif" valign="bottom"><a href="'+liURL+'" style="color:'+color+';text-decoration:none;font-weight:normal;font-size:12px" target="_blank">'+li+'</a></td> </tr>';
     }
     var phoneHtml = '';
     if (phone.length != 0) {
-        phoneHtml = '<tr> <td style="padding-left: 10px; color:#666666; font-size:13px;">p: <a href="#" style="text-decoration:none;color:#45ADDF">'+phone+'</a></td> </tr> ';
+        phoneHtml = '<tr> <td style="vertical-align:bottom;width:20px;color:#7a7a7a;font-size:12px;font-family:Arial,Helvetica,sans-serif" width="20" valign="bottom">p:</td> <td style="vertical-align:bottom;color:#333333;font-size:12px;font-family:Arial,Helvetica,sans-serif" valign="bottom">'+phone+'</td> </tr>'; 
     }
-    var sigHtml = ' <table style="font-family:Arial;"> <tr> <th rowspan="9" style="border-right-color: #888888; border-right-width: 3px; border-right-style: solid; vertical-align:top; padding-left: 10px; padding-top:10px; padding-right: 10;"><img height="88" width="88" src="https://s3-ap-southeast-1.amazonaws.com/evosesports.com/images/logo_for_email_signature.png" alt="evos-logo" border="0" /></th> </tr> <tr> <td style="padding-left: 10px; color:#333333; font-size:15px;">'+name+'</td> </tr> <tr> <td style="padding-left: 10px; color:#111111; padding-bottom:15px; font-size:14px; font-weight:bold;">'+title+' | '+company+'</td> </tr> <tr> <td style="padding-left: 10px; color:#666666; font-size:13px;">e: <a href="'+email+'" style="text-decoration:none;color:#45ADDF">'+email+'</a></td> </tr> '+phoneHtml+' <tr> <td style="padding-left: 10px; color:#666666; font-size:13px;">a: <span style="color:#111111">Tong Fong Building</span></td> </tr> <tr> <td style="padding-left: 10px; color:#111111; font-size:13px;">&nbsp;&nbsp;&nbsp;&nbsp;290 River Valley Road</td> </tr> <tr> <td style="padding-left: 10px; color:#111111; font-size:13px;">&nbsp;&nbsp;&nbsp;&nbsp;Singapore 238331</td> </tr>'+liHtml+'</table>';
+    var sigHtml = '<table style="background:none;border-width:0px;border:0px;margin:0;margin-top:50px;padding:0" cellspacing="0" cellpadding="0" border="0"> <tbody> <tr> <td style="padding-top:10;padding-bottom:0;padding-left:0;padding-right:7px;border-top:0;border-bottom:0;border-left:0;border-right:solid 3px #7a7a7a" valign="top"><img id="m_-6502759557817129844m_-3880331651255804399preview-image-url" src="'+logo+'" class="CToWUd" width="'+logoW+'" height="'+logoH+'"></td> <td style="padding-top:0;padding-bottom:0;padding-left:12px;padding-right:0"> <table style="background:none;border-width:0px;border:0px;margin:0;padding:0" cellspacing="0" cellpadding="0" border="0"> <tbody> <tr> <td colspan="2" style="padding-bottom:5px;color:#7a7a7a;font-size:14px;font-family:Arial,Helvetica,sans-serif">'+name+'</td> </tr> <tr> <td colspan="2" style="color:#333333;font-size:12px;font-family:Arial,Helvetica,sans-serif"><strong>'+title+' | '+company+' </strong></td> </tr> <tr> <td style="vertical-align:bottom;width:20px;color:#7a7a7a;font-size:12px;font-family:Arial,Helvetica,sans-serif" width="20" valign="bottom">e:</td> <td style="vertical-align:bottom;color:#333333;font-size:12px;font-family:Arial,Helvetica,sans-serif" valign="bottom"><a href="mailto:email@address.sg" style="color:'+color+';text-decoration:none;font-weight:normal;font-size:12px" target="_blank">email@address.sg</a></td> </tr> '+phoneHtml+'<tr> <td style="vertical-align:bottom;width:20px;color:#7a7a7a;font-size:12px;font-family:Arial,Helvetica,sans-serif" width="20" valign="bottom">a:</td> <td style="vertical-align:bottom;color:#333333;font-size:12px;font-family:Arial,Helvetica,sans-serif" valign="bottom">'+addr1+'</td> </tr> <tr> <td style="vertical-align:bottom;width:20px;color:#7a7a7a;font-size:12px;font-family:Arial,Helvetica,sans-serif" width="20" valign="bottom">&nbsp;</td> <td style="vertical-align:bottom;color:#333333;font-size:12px;font-family:Arial,Helvetica,sans-serif" valign="bottom">'+addr2+'</td> </tr> '+liHtml+' </tbody> </table> </td> </tr> </tbody> </table>';
     return sigHtml;
 }
 
@@ -203,7 +242,14 @@ function generateSignature(){
     var phone = document.querySelector('#inputPhoneNumber').value;
     var company = document.querySelector('#inputCompany').value;
 
-    var sigHtml = getSignatureHtml(name, title, email, li, phone, company);
+    var color = document.querySelector('#inputColor').value;
+    var logo = document.querySelector('#inputLogo').value;
+    var logoH = document.querySelector('#inputLogoH').value;
+    var logoW = document.querySelector('#inputLogoW').value;
+    var addr1 = document.querySelector('#inputAddr1').value;
+    var addr2 = document.querySelector('#inputAddr2').value;
+
+    var sigHtml = getSignatureHtml(name, title, email, li, phone, company, color, logo, logoH, logoW, addr1, addr2);
 
     var sigHolder = document.querySelector('.sig-holder');
     var sigHtmlHolder = document.querySelector('#signatureHtml textarea');
