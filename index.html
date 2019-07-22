@@ -105,6 +105,14 @@
                 <input required id="inputEmail" />
             </div>
             <div class="form-group">
+                <label>Company</label>
+                <input required id="inputCompany" value="EVOS Holdings"/>
+            </div>
+            <div class="form-group">
+                <label>Phone Number (optional)</label>
+                <input id="inputPhoneNumber" />
+            </div>
+            <div class="form-group">
                 <label>Linkedin URL (optional)</label>
                 <input id="inputLI" />
             </div>
@@ -113,7 +121,7 @@
         <div id="rawSigHolder" class="sig-holder">
             <table style="font-family:Arial;">
                 <tr>
-                    <th rowspan="8" style="border-right-color: #888888; border-right-width: 3px; border-right-style: solid; vertical-align:top; padding-left: 10px; padding-top:10px; padding-right: 10;"><img height="88" width="88" src="https://s3-ap-southeast-1.amazonaws.com/evosesports.com/images/logo_for_email_signature.png" alt="evos-logo" border="0" /></th>
+                    <th rowspan="9" style="border-right-color: #888888; border-right-width: 3px; border-right-style: solid; vertical-align:top; padding-left: 10px; padding-top:10px; padding-right: 10;"><img height="88" width="88" src="https://s3-ap-southeast-1.amazonaws.com/evosesports.com/images/logo_for_email_signature.png" alt="evos-logo" border="0" /></th>
                 </tr>
                 <tr>
                     <td style="padding-left: 10px; color:#333333; font-size:15px;">Name Here</td>
@@ -123,6 +131,9 @@
                 </tr>
                 <tr>
                     <td style="padding-left: 10px; color:#666666; font-size:13px;">e: <a href="mailto:email@evos.sg" style="text-decoration:none;color:#45ADDF">email@evos.sg</a></td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 10px; color:#666666; font-size:13px;">p: <a href="#" style="text-decoration:none;color:#45ADDF">+123 456 789</a></td>
                 </tr>
                 <tr>
                     <td style="padding-left: 10px; color:#666666; font-size:13px;">a: <span style="color:#111111">Tong Fong Building</span></td>
@@ -167,12 +178,20 @@
                 pos: 'top-center'
             });
         }
-function getSignatureHtml(name, title, email, li){
+function getSignatureHtml(name, title, email, li, phone, company){
     var liHtml = '';
     if (li.length != 0) {
-        liHtml = '<tr> <td style="padding-left: 10px; color:#666666; font-size:13px;">l: <a href="https://'+li+'" style="text-decoration:none;color:#45ADDF">'+li+'</a></td> </tr>';
+        var liURL = "https://"+li;
+        if (li.toLowerCase().startsWith("http")) {
+            liURL = li;
+        }
+        liHtml = '<tr> <td style="padding-left: 10px; color:#666666; font-size:13px;">li: <a href="'+liURL+'" style="text-decoration:none;color:#45ADDF">'+li+'</a></td> </tr>';
     }
-    var sigHtml = '<table style="font-family:Arial;"> <tr> <th rowspan="8" style="border-right-color: #888888; border-right-width: 3px; border-right-style: solid; vertical-align:top; padding-left: 10px; padding-top:10px; padding-right: 10;"><img height="88" width="88" src="https://s3-ap-southeast-1.amazonaws.com/evosesports.com/images/logo_for_email_signature.png" alt="evos-logo" border="0" /></th> </tr> <tr> <td style="padding-left: 10px; color:#333333; font-size:15px;">'+name+'</td> </tr> <tr> <td style="padding-left: 10px; color:#111111; padding-bottom:15px; font-size:14px; font-weight:bold;">'+title+' | EVOS Holdings</td> </tr> <tr> <td style="padding-left: 10px; color:#666666; font-size:13px;">e: <a href="mailto:'+email+'" style="text-decoration:none;color:#45ADDF">'+email+'</a></td> </tr> <tr> <td style="padding-left: 10px; color:#666666; font-size:13px;">a: <span style="color:#111111">Tong Fong Building</span></td> </tr> <tr> <td style="padding-left: 10px; color:#111111; font-size:13px;">&nbsp;&nbsp;&nbsp;&nbsp;290 River Valley Road</td> </tr> <tr> <td style="padding-left: 10px; color:#111111; font-size:13px;">&nbsp;&nbsp;&nbsp;&nbsp;Singapore 238331</td> </tr>'+liHtml+'</table>';
+    var phoneHtml = '';
+    if (phone.length != 0) {
+        phoneHtml = '<tr> <td style="padding-left: 10px; color:#666666; font-size:13px;">p: <a href="#" style="text-decoration:none;color:#45ADDF">'+phone+'</a></td> </tr> ';
+    }
+    var sigHtml = ' <table style="font-family:Arial;"> <tr> <th rowspan="9" style="border-right-color: #888888; border-right-width: 3px; border-right-style: solid; vertical-align:top; padding-left: 10px; padding-top:10px; padding-right: 10;"><img height="88" width="88" src="https://s3-ap-southeast-1.amazonaws.com/evosesports.com/images/logo_for_email_signature.png" alt="evos-logo" border="0" /></th> </tr> <tr> <td style="padding-left: 10px; color:#333333; font-size:15px;">'+name+'</td> </tr> <tr> <td style="padding-left: 10px; color:#111111; padding-bottom:15px; font-size:14px; font-weight:bold;">'+title+' | '+company+'</td> </tr> <tr> <td style="padding-left: 10px; color:#666666; font-size:13px;">e: <a href="'+email+'" style="text-decoration:none;color:#45ADDF">'+email+'</a></td> </tr> '+phoneHtml+' <tr> <td style="padding-left: 10px; color:#666666; font-size:13px;">a: <span style="color:#111111">Tong Fong Building</span></td> </tr> <tr> <td style="padding-left: 10px; color:#111111; font-size:13px;">&nbsp;&nbsp;&nbsp;&nbsp;290 River Valley Road</td> </tr> <tr> <td style="padding-left: 10px; color:#111111; font-size:13px;">&nbsp;&nbsp;&nbsp;&nbsp;Singapore 238331</td> </tr>'+liHtml+'</table>';
     return sigHtml;
 }
 
@@ -181,8 +200,10 @@ function generateSignature(){
     var title = document.querySelector('#inputTitle').value;
     var email = document.querySelector('#inputEmail').value;
     var li = document.querySelector('#inputLI').value;
+    var phone = document.querySelector('#inputPhoneNumber').value;
+    var company = document.querySelector('#inputCompany').value;
 
-    var sigHtml = getSignatureHtml(name, title, email, li);
+    var sigHtml = getSignatureHtml(name, title, email, li, phone, company);
 
     var sigHolder = document.querySelector('.sig-holder');
     var sigHtmlHolder = document.querySelector('#signatureHtml textarea');
